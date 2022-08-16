@@ -10,8 +10,8 @@ public interface Stapel<T> {
 	 * Macht dolle sachen
 	 * @param value
 	 */
-	void push(T value);
-	T pop();
+	void push(T value) throws StapelException;
+	T pop()throws StapelException;
 	
 	/**
 	 * 

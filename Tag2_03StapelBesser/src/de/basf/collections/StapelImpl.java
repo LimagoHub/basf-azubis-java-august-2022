@@ -7,28 +7,31 @@ public class StapelImpl<T> implements Stapel<T> {
 	private int index;
 	
 	
-	public StapelImpl() {
+	public StapelImpl() throws StapelException{
 		this(DEFAULT_SIZE);
 	}
 	
-	public StapelImpl(int groesse) {
-		data = (T []) new Object[groesse < 1?DEFAULT_SIZE:groesse];
+	public StapelImpl(int groesse) throws StapelException{
+		if(groesse < 1)
+			throw new StapelException("Init");
+		
+		data = (T []) new Object[groesse];
 		index = 0;
 	}
 	
 	@Override
-	public void push(T value) {
+	public void push(T value) throws StapelException{
 		if(isFull()) 
-			return;
+			throw new StapelException("Overflow");
 		
 		data[index++] = value;
 
 	}
 
 	@Override
-	public T pop() {
+	public T pop() throws StapelException{
 		if(isEmpty())
-			return null;
+			throw new StapelException("Underflow");
 		
 		return data[--index];
 	}
