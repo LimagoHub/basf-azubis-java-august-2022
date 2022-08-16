@@ -11,7 +11,10 @@ public class GeoTest {
 		Kreis k;
 		
 		object = new Kreis();
-		System.out.println(object);
+		
+		System.out.println(object.toString());
+		
+		
 	}
 
 }
