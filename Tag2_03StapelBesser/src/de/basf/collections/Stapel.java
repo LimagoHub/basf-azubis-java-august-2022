@@ -4,14 +4,14 @@ package de.basf.collections;
  * @author JoachimWagner
  *
  */
-public interface Stapel {
+public interface Stapel<T> {
 	
 	/**
 	 * Macht dolle sachen
 	 * @param value
 	 */
-	void push(int value);
-	int pop();
+	void push(T value);
+	T pop();
 	
 	/**
 	 * 

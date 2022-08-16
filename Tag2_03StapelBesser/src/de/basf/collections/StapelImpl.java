@@ -1,9 +1,9 @@
 package de.basf.collections;
 
-public class StapelImpl implements Stapel {
+public class StapelImpl<T> implements Stapel<T> {
 
 	private static final int DEFAULT_SIZE = 10;
-	private int [] data;
+	private T [] data;
 	private int index;
 	
 	
@@ -12,12 +12,12 @@ public class StapelImpl implements Stapel {
 	}
 	
 	public StapelImpl(int groesse) {
-		data = new int [groesse < 1?DEFAULT_SIZE:groesse];
+		data = (T []) new Object[groesse < 1?DEFAULT_SIZE:groesse];
 		index = 0;
 	}
 	
 	@Override
-	public void push(int value) {
+	public void push(T value) {
 		if(isFull()) 
 			return;
 		
@@ -26,9 +26,9 @@ public class StapelImpl implements Stapel {
 	}
 
 	@Override
-	public int pop() {
+	public T pop() {
 		if(isEmpty())
-			return 0;
+			return null;
 		
 		return data[--index];
 	}
