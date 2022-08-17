@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 
 public class Fenster extends Frame implements KeyListener , MouseListener{
 	
+	private static final int STEP = 2;
 	private static final int SIZE = 500;
 	private String message = "Hallo Fenster";
 	private int x, y;
@@ -46,9 +47,31 @@ public class Fenster extends Frame implements KeyListener , MouseListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
-		if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_ESCAPE:
 			dispose();
+			break;
+
+		case KeyEvent.VK_RIGHT:
+			x += STEP;
+			break;
+
+		case KeyEvent.VK_LEFT:
+			x -= STEP;
+			break;
+
+		case KeyEvent.VK_UP:
+			y -= STEP;
+			break;
+
+		case KeyEvent.VK_DOWN:
+			y += STEP;
+			break;
+
+		
 		}
+		
+		
 		
 		message = "Taste wurde gedrückt";
 		repaint();
