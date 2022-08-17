@@ -3,34 +3,93 @@ package de.gui;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class Fenster extends Frame{
+public class Fenster extends Frame implements KeyListener , MouseListener{
 	
-	
+	private static final int SIZE = 500;
+	private String message = "Hallo Fenster";
+	private int x, y;
 	
 	public Fenster() {
 		super("Ein tolles Fenster");
-		setSize(300, 300);
+		x = y = SIZE / 2;
+		addKeyListener(this);
+		addMouseListener(this);
+		setSize(SIZE, SIZE);
 		setVisible(true);
 	}
 
 	@Override
 	public void paint(Graphics g) {
 		
-		g.drawLine(50, 50, 100, 100);
-		g.fillOval(50, 50, 30, 30);
 		
-		//Color c = new Color(40, 31, 255);
-		g.drawString("Hallo Fenster", 50, 200);
-		g.setColor(Color.PINK);
-		g.drawString("Hallo Fenster", 50, 100);
-		
+		g.drawString(message, 50, 100);
+		g.drawRect(x, y, 30, 30);
 		
 	}
 	
 	
 	public static void main(String[] args) {
 		new Fenster();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		
+		if(e.getKeyCode()==KeyEvent.VK_ESCAPE) {
+			dispose();
+		}
+		
+		message = "Taste wurde gedrückt";
+		repaint();
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		message = "Maus ist zuhaus!";
+		repaint();
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		message = "Maus ist raus!";
+		repaint();
+		
 	}
 
 }
