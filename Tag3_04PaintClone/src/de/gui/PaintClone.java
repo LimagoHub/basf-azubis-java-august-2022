@@ -9,7 +9,7 @@ public class PaintClone extends Frame {
 	
 	
 	 public PaintClone() {
-		setMenuBar(new MyMenuBar());
+		setMenuBar(new MyMenuBar(this));
 		setResizable(false);
 		setSize(SIZE, SIZE);
 	}
