@@ -6,27 +6,28 @@ import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import de.gui.PaintClone.Form;
+
 public class MyMenuBar extends MenuBar {
 	
+	
 	public MyMenuBar(PaintClone paintClone) {
+		
+		
 		Menu menu;
 		MenuItem menuItem;
 		
 		menu = new Menu("Datei");
 		
-		menuItem = new MenuItem("beenden");
-		menuItem.addActionListener(e->paintClone.dispose());
-		menu.add(menuItem);
+		createItem(menu, "beenden", e->paintClone.dispose());
 		
 		add(menu);
 		
 		menu = new Menu("Formen");
 		
-		menuItem = new MenuItem("Linie");
-		menu.add(menuItem);
+		createItem(menu, "Linie", e->paintClone.setForm(Form.LINIE));
+		createItem(menu, "Oval", e->paintClone.setForm(Form.OVAL));
 		
-		menuItem = new MenuItem("Oval");
-		menu.add(menuItem);
 		
 		menuItem = new MenuItem("Rechteck");
 		menu.add(menuItem);
@@ -60,6 +61,13 @@ public class MyMenuBar extends MenuBar {
 		menu.add(menuItem);
 		
 		add(menu);
+	}
+
+	private void createItem(Menu menu, String label, ActionListener listener) {
+		MenuItem menuItem;
+		menuItem = new MenuItem(label);
+		menuItem.addActionListener(listener);
+		menu.add(menuItem);
 	}
 
 }
