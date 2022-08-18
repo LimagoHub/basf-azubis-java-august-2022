@@ -1,5 +1,6 @@
 package de.gui;
 
+import java.awt.Color;
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
@@ -27,38 +28,23 @@ public class MyMenuBar extends MenuBar {
 		
 		createItem(menu, "Linie", e->paintClone.setForm(Form.LINIE));
 		createItem(menu, "Oval", e->paintClone.setForm(Form.OVAL));
-		
-		
-		menuItem = new MenuItem("Rechteck");
-		menu.add(menuItem);
-		
+		createItem(menu, "Rechteck", e->paintClone.setForm(Form.RECHTECK));
 		menu.addSeparator();
+		createItem(menu, "Löschen", e->paintClone.setForm(Form.LÖSCHEN));
 		
-		menuItem = new MenuItem("Löschen");
-		menu.add(menuItem);
+		
 		
 		add(menu);
 		
 		menu = new Menu("Farben");
 		
-		menuItem = new MenuItem("Weiss");
-		menu.add(menuItem);
-		
-		menuItem = new MenuItem("Schwarz");
-		menu.add(menuItem);
-		
-
-		menuItem = new MenuItem("Rot");
-		menu.add(menuItem);
-		
-		menuItem = new MenuItem("Grün");
-		menu.add(menuItem);
-		
-		menuItem = new MenuItem("Blau");
-		menu.add(menuItem);
-		
-		menuItem = new MenuItem("Pink");
-		menu.add(menuItem);
+		createItem(menu, "weiss", e->paintClone.setColor(Color.WHITE));
+		createItem(menu, "schwarz", e->paintClone.setColor(Color.BLACK));
+		createItem(menu, "rot", e->paintClone.setColor(Color.RED));
+		createItem(menu, "grün", e->paintClone.setColor(Color.GREEN));
+		createItem(menu, "blau", e->paintClone.setColor(Color.BLUE));
+		createItem(menu, "gelb", e->paintClone.setColor(Color.YELLOW));
+		createItem(menu, "pink", e->paintClone.setColor(Color.PINK));
 		
 		add(menu);
 	}
