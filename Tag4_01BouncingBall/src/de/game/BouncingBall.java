@@ -47,8 +47,10 @@ public class BouncingBall extends Frame{
 		if(ball.x > getWidth() || ball.x < 0)
 			ball.setxSpeed(ball.getxSpeed() * -1);
 		
-		if(ball.y > getWidth() || ball.y < 0)
+		if(ball.y > getHeight() || ball.y < 0)
 			ball.setySpeed(ball.getySpeed() * -1);
+		
+		
 			
 	}
 
