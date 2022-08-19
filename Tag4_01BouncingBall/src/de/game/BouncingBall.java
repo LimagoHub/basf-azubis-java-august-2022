@@ -9,6 +9,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
+import java.time.Duration;
+import java.time.Instant;
+
 import static java.awt.event.KeyEvent.*;
 import static java.lang.Math.*;
 
@@ -44,10 +47,18 @@ public class BouncingBall extends Frame{
 
 	private void run() {
 		
-		while(! gameover) {
-			calculateScene();
-			renderScene();
-			// Warten
+		try {
+			while(! gameover) {
+				Instant start = Instant.now();
+				calculateScene();
+				renderScene();
+				Instant ende = Instant.now();
+				Duration duration = Duration.between(start, ende);
+				//long wartezeit = 17-duration.toMillis();
+				Thread.sleep(10);
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 		
 	}
